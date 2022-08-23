@@ -14,14 +14,14 @@ class CategoryRepository implements CategoryInterface
     public function getAllCategory()
     {
         //select all post
-        $category = Category::all();
+        $category = Category::latest()->paginate(5);
         
-        return $this->success("Berhasil, load list category", $category);
+        return $this->success("Berhasil, load list category", $category, 200);
     }
 
     public function getCategoryById(Category $category)
     {
-        return $this->success("Data category berhasil ditemukan", $category);
+        return $this->success("Data category berhasil ditemukan", $category, 200);
     }
 
     public function createCategory(CategoryRequest $request)
@@ -31,7 +31,7 @@ class CategoryRepository implements CategoryInterface
         $category->name     = $request->name;
         $category->user_id  = auth()->id();
         $category->save();
-        return $this->success("Data category berhasil ditambahkan", $category);
+        return $this->success("Data category berhasil ditambahkan", $category, 201);
 
     }
 
@@ -40,7 +40,7 @@ class CategoryRepository implements CategoryInterface
         //update category
         $category->name     = $request->name;
         $category->save();
-        return $this->success("Data category berhasil diubah", $category);
+        return $this->success("Data category berhasil diubah", $category, 201);
 
     }
 
@@ -48,7 +48,7 @@ class CategoryRepository implements CategoryInterface
     {
         //delete category
         $category->delete();
-        
-        return $this->success("Data category berhasil dihapus", $category);
+
+        return $this->success("Data category berhasil dihapus", $category, 201);
     }
 }

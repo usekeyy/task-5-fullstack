@@ -20,7 +20,7 @@ class AuthRepository implements AuthInterface
         $user->email    = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
-        return $this->success("Data user berhasil ditambahkan", $user);
+        return $this->success("Regitrasi berhasil", $user, 201);
     }
 
     public function login(AuthRequest $request)
@@ -37,13 +37,13 @@ class AuthRepository implements AuthInterface
             'user'          => $user,
             'accessToken'   => $token,
         ];
-        return $this->success("Selamat anda berhasil login", $data);
+        return $this->success("Selamat anda berhasil login", $data, 200);
     }
 
     public function logout(Request $request)
     {
         $user = $request->user()->token()->revoke();
-        return $this->success("Selamat anda berhasil logout", null);
+        return $this->success("Selamat anda berhasil logout", null, 200);
     }
 
 }

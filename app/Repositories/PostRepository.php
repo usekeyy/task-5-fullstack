@@ -17,14 +17,14 @@ class PostRepository implements PostInterface
     public function getAllPost()
     {
         //select all post
-        $post = Post::all();
+        $post = Post::latest()->paginate(5);
 
-        return $this->success("Berhasil, load list post", $post);
+        return $this->success("Berhasil, load list post", $post, 200);
     }
 
     public function getPostById(Post $post)
     {
-        return $this->success("Data post berhasil ditemukan", $post);
+        return $this->success("Data post berhasil ditemukan", $post, 200);
     }
 
     public function createPost(PostRequest $request)
@@ -48,7 +48,7 @@ class PostRepository implements PostInterface
         $post->category_id = $request->category_id;
         $post->save();
 
-        return $this->success("Data post berhasil ditambahkan", $post);
+        return $this->success("Data post berhasil ditambahkan", $post, 201);
 
     }
 
@@ -78,7 +78,7 @@ class PostRepository implements PostInterface
         $post->category_id = $request->category_id;
         $post->save();
 
-        return $this->success("Data post berhasil diubah", $post);
+        return $this->success("Data post berhasil diubah", $post, 201);
 
     }
 
@@ -90,6 +90,6 @@ class PostRepository implements PostInterface
         //delete post
         $post->delete();
 
-        return $this->success("Data post berhasil dihapus", $post);
+        return $this->success("Data post berhasil dihapus", $post, 201);
     }
 }
