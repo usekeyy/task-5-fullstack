@@ -27,10 +27,10 @@ class AuthRepository implements AuthInterface
     {
         $user  = User::where('email', $request->email)->first();
         if (!$user) {
-            return $this->error("Email yang anda masukkan belum terdaftar");
+            return $this->error("Email yang anda masukkan belum terdaftar", 400);
         }
         if (!Hash::check(request('password'), $user->password)) {
-            return $this->error("Password yang anda masukkan salah");
+            return $this->error("Password yang anda masukkan salah", 400);
         }
         $token = $user->createToken('accessToken')->accessToken;
         $data = [

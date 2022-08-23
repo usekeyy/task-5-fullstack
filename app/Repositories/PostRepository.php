@@ -31,7 +31,7 @@ class PostRepository implements PostInterface
     {
         //check category
         if(!Category::where('id', $request->category_id)->exists()){
-            return $this->error("Category tidak ditemukan");
+            return $this->error("Category tidak ditemukan", 400);
         }
         
         //define image name and save 
@@ -56,7 +56,7 @@ class PostRepository implements PostInterface
     {
         //check category
         if(!Category::where('id', $request->category_id)->exists()){
-            return $this->error("Category tidak ditemukan");
+            return $this->error("Category tidak ditemukan", 400);
         }
 
         //check image change
