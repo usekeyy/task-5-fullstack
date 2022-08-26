@@ -14,17 +14,17 @@ class Post extends Model
         'title',
         'content',
         'user_id',
-        'categories_id',
+        'category_id',
     ];
 
     //Eloquent relationship 
-    public function user()
+    public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsTo(Categories::class, 'categories_id');
+        return $this->belongsTo(Categories::class, 'category_id');
     }
 }

@@ -11,4 +11,5 @@ interface PostInterface{
     public function createPost(PostRequest $request);
     public function updatePost(PostRequest $request, Post $post);
     public function deletePost(Post $post);
+
 }

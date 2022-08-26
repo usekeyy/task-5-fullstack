@@ -19,7 +19,7 @@ class Categories extends Model
         return $this->hasMany(Article::class);
     }
 
-    public function user()
+    public function author()
     {
         return $this->belongsTo(User::class, 'user_id');
     }

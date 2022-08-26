@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categories as Category;
 use App\Interfaces\CategoryInterface;
@@ -15,7 +16,7 @@ class CategoriesController extends Controller
     {
         $this->categoryInterface = $categoryInterface;
     }
-
+    
     public function index()
     {
         return $this->categoryInterface->getAllCategory();
@@ -24,6 +25,11 @@ class CategoriesController extends Controller
     public function store(CategoryRequest $request)
     {
         return $this->categoryInterface->createCategory($request);
+    }
+
+    public function create()
+    {
+        return $this->categoryInterface->viewStore();
     }
 
     public function show(Category $category)

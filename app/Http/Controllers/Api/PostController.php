@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Interfaces\PostInterface;
+use App\Repositories\PostRepository;
 use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
@@ -12,7 +14,7 @@ class PostController extends Controller
 
     protected $postInterface;
 
-    public function __construct(PostInterface $postInterface)
+    public function __construct(PostRepository $postInterface)
     {
         $this->postInterface = $postInterface;
     }

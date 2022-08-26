@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-// use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Interfaces\AuthInterface;
+use App\Repositories\AuthRepository;
 use App\Http\Requests\AuthRequest;
 
 class AuthController extends Controller
 {
     protected $authInterface;
 
-    public function __construct(AuthInterface $authInterface)
+    public function __construct(AuthRepository $authInterface)
     {
         $this->authInterface = $authInterface;
     }
