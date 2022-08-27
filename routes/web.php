@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\PostController;
+use App\Http\Controllers\Web\CategoriesController;
+
 
 
 /*
@@ -23,6 +25,6 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/post', PostController::class);
-    Route::resource('/category', PostController::class);
+    Route::resource('/category', CategoriesController::class);
 });
 

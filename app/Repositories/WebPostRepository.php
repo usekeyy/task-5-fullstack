@@ -18,7 +18,7 @@ class WebPostRepository implements PostInterface, WebPostInterface
         //select all post
         $posts = Post::with('author','category')->get();
 
-        return view('home', ['posts' => $posts]);
+        return view('postDashboard', ['posts' => $posts]);
     }
 
     public function getPostById(Post $post)

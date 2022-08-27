@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\Categories as Category;
 use App\Interfaces\CategoryInterface;
 use App\Http\Requests\CategoryRequest;
+use App\Repositories\WebCategoryRepository;
 
 class CategoriesController extends Controller
 {
     protected $categoryInterface;
 
-    public function __construct(CategoryInterface $categoryInterface)
+    public function __construct(WebCategoryRepository $categoryInterface)
     {
         $this->categoryInterface = $categoryInterface;
     }

@@ -2,10 +2,11 @@
 
 @section('content')
 
-<div class="container">
+<div class="container w-75">
     <div class="card">
         <div class="card-body">
-            <form class="w-75 m-auto" enctype="multipart/form-data" method= "POST" action="/post/{{$post->id}}">
+            <h2 class="d-flex justify-content-center">Update Post</h2>
+            <form class="p-3" enctype="multipart/form-data" method= "POST" action="/post/{{$post->id}}">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
@@ -30,7 +31,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="mb-3">
+                <div class="d-flex justify-content-end">
 
                     <button type="submit" class="btn btn-primary">Submit</button>                
                 </div>

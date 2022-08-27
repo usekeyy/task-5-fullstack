@@ -22,7 +22,7 @@ use App\Http\Controllers\Api\AuthController;
 // });
 
 Route::prefix('v1')->group(function(){
-    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/login', [AuthController::class, 'login'])->name('apiLogin');
     Route::post('/register', [AuthController::class, 'register']);
     
     Route::group(['middleware' => 'auth:api'], function () {

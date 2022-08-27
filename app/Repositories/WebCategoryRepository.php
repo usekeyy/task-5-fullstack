@@ -29,7 +29,7 @@ class WebCategoryRepository implements CategoryInterface, WebCategoryInterface
     }
 
 
-    public function viewUpdate(Post $post)
+    public function viewUpdate(Category $category)
     {
 
         return view('updateCategory', ['category' => $category]);
@@ -43,7 +43,7 @@ class WebCategoryRepository implements CategoryInterface, WebCategoryInterface
         $category->user_id  = auth()->id();
         $category->save();
 
-        return redirect('/categoryDashboard');
+        return redirect('/category');
 
     }
 
@@ -53,7 +53,7 @@ class WebCategoryRepository implements CategoryInterface, WebCategoryInterface
         $category->name     = $request->name;
         $category->save();
 
-        return redirect('/categoryDashboard');
+        return redirect('/category');
 
     }
 
@@ -62,6 +62,6 @@ class WebCategoryRepository implements CategoryInterface, WebCategoryInterface
         //delete category
         $category->delete();
 
-        return redirect('/categoryDashboard');
+        return redirect('/category');
     }
 }
